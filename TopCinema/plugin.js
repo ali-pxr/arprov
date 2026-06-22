@@ -1,16 +1,14 @@
-
 const PLUGIN_ID = 'topcinema';
-function log(msg, data) { try { console.log(`[${PLUGIN_ID}] ${msg}`, data || ''); } catch (_) {} }
-
 const baseUrl = typeof manifest !== 'undefined' ? manifest.baseUrl : 'https://topcinema.tv';
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36';
 
-async function httpFetch(url, extraHeaders = {}) {
-    const h = { 'User-Agent': UA, ...extraHeaders };
+async function httpFetch(url, extraHeaders) {
+    const h = { 'User-Agent': UA };
+    if (extraHeaders) Object.assign(h, extraHeaders);
     if (typeof http_get !== 'undefined') {
         let r;
-        try { r = await http_get(url, h); } catch (e) { r = { status: 403, body: 'cloudflare' }; }
-        if (r.status === 403 || r.status === 503 || (typeof r.body === 'string' && r.body.includes('Just a moment'))) {
+        try { r = await http_get(url, h); } catch (e) { r = { status: 403, body: '' }; }
+        if (r.status === 403 || r.status === 503 || (r.body && r.body.includes('Just a moment'))) {
             if (typeof solveCaptcha !== 'undefined') {
                 await solveCaptcha('cloudflare', url);
                 try { r = await http_get(url, h); } catch (e) { r = { status: 500, body: '' }; }
@@ -21,46 +19,85 @@ async function httpFetch(url, extraHeaders = {}) {
     return '';
 }
 
-import * as cheerio from 'cheerio';
+// Simple HTML helper: get attribute of first element matching selector
+function getAttr(html, sel, attr) {
+    if (typeof parse_html !== 'undefined') {
+        return parse_html(html, sel, attr) || '';
+    }
+    return '';
+}
+
+// Extract all matches of regex from html
+function matchAll(html, regex) {
+    const results = [];
+    let m;
+    while ((m = regex.exec(html)) !== null) results.push(m);
+    return results;
+}
+
+// Fix relative URLs
+function fixUrl(u) {
+    if (!u) return "";
+    if (u.startsWith("http")) return u;
+    if (u.startsWith("//")) return "https:" + u;
+    if (u.startsWith("/")) return baseUrl + u;
+    return baseUrl + "/" + u;
+}
 
 async function getHome(cb) {
+    const cats = {"أفلام": "/category/movies/"};
     const data = {};
-    try {
-        const html = await httpFetch(baseUrl + "/category/movies/");
-        const $ = cheerio.load(html);
-        const items = [];
-        $(".post-item, .entry").each((i, el) => {
-            const a = $(el).find("a").first();
-            if (!a.length) return;
-            const href = a.attr("href") || "";
-            if (!href || href === baseUrl || href === baseUrl + "/") return;
-            const title = $(el).find(".entry-title a, a").first().text().trim() || a.attr("title") || a.text().trim();
-            if (!title) return;
-            const poster = $(el).find("img").first().attr("data-src") || $(el).find("img").first().attr("data-image") || $(el).find("img").first().attr("src") || "";
-            const type = "movie";
-            items.push(new MultimediaItem({ title, url: href.startsWith("http") ? href : baseUrl + href, posterUrl: poster, type }));
-        });
-        if (items.length) data["أفلام"] = items;
-    } catch (e) { log("getHome error", e); }
-
+    for (const [name, path] of Object.entries(cats)) {
+        try {
+            const html = await httpFetch(baseUrl + path);
+            const items = [];
+            const articles = matchAll(html, /<article[^>]*>([\s\S]*?)<\/article>/gi);
+            if (articles.length === 0) {
+                // Fallback: try post-item / entry patterns
+                const posts = matchAll(html, /<div[^>]*class="[^"]*(?:post-item|entry|movie-item|BlockItem)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>)?/gi);
+                for (const post of posts) {
+                    const href = (post[1].match(/href="([^"]+)"/) || [])[1] || '';
+                    if (!href || href === baseUrl) continue;
+                    let title = (post[1].match(/entry-title[^>]*>(?:<a[^>]+>)?([^<]+)/i) || [])[1] || (post[1].match(/alt="([^"]+)"/) || [])[1] || '';
+                    title = title.trim();
+                    if (!title) continue;
+                    const poster = (post[1].match(/data-(?:src|image)="([^"]+)"/) || [])[1] || (post[1].match(/src="([^"]+?(?:poster|thumb|cover)[^"]*)"/i) || [])[1] || '';
+                    const isSeries = href.includes('مسلسل') || href.includes('series') || href.includes('anime') || false;
+                    items.push(new MultimediaItem({ title, url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie" }));
+                }
+            } else {
+                for (const article of articles) {
+                    const href = (article[1].match(/href="([^"]+)"/) || [])[1] || '';
+                    if (!href || href === baseUrl) continue;
+                    let title = (article[1].match(/entry-title[^>]*>(?:<a[^>]+>)?([^<]+)/i) || [])[1] || (article[1].match(/alt="([^"]+)"/) || [])[1] || '';
+                    title = title.trim();
+                    if (!title) continue;
+                    const poster = (article[1].match(/data-(?:src|image)="([^"]+)"/) || [])[1] || (article[1].match(/src="([^"]+)"/) || [])[1] || '';
+                    const isSeries = href.includes('مسلسل') || href.includes('series') || false;
+                    items.push(new MultimediaItem({ title, url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie" }));
+                }
+            }
+            if (items.length) data[name] = items;
+        } catch (e) {}
+    }
     cb({ success: true, data });
 }
 
 async function search(query, cb) {
     try {
-        const html = await httpFetch(`{baseUrl}/?s={{QUERY}}`.replace("{QUERY}", encodeURIComponent(query)));
-        const $ = cheerio.load(html);
+        const html = await httpFetch(baseUrl + "/?s=" + encodeURIComponent(query));
         const items = [];
-        $(".post-item, .entry").each((i, el) => {
-            const a = $(el).find("a").first();
-            if (!a.length) return;
-            const href = a.attr("href") || "";
-            if (!href) return;
-            const title = $(el).find(".entry-title, a").first().text().trim() || a.attr("title") || a.text().trim();
-            if (!title) return;
-            const poster = $(el).find("img").first().attr("data-src") || $(el).find("img").first().attr("src") || "";
-            items.push(new MultimediaItem({ title, url: href.startsWith("http") ? href : baseUrl + href, posterUrl: poster, type: "movie" }));
-        });
+        const posts = matchAll(html, /<article[^>]*>([\s\S]*?)<\/article>/gi);
+        const src = posts.length > 0 ? posts : matchAll(html, /<div[^>]*class="[^"]*(?:post-item|entry)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>)?/gi);
+        for (const post of src) {
+            const href = (post[1].match(/href="([^"]+)"/) || [])[1] || '';
+            if (!href) continue;
+            let title = (post[1].match(/entry-title[^>]*>(?:<a[^>]+>)?([^<]+)/i) || [])[1] || (post[1].match(/alt="([^"]+)"/) || [])[1] || '';
+            title = title.trim();
+            if (!title) continue;
+            const poster = (post[1].match(/data-(?:src|image)="([^"]+)"/) || [])[1] || (post[1].match(/src="([^"]+)"/) || [])[1] || '';
+            items.push(new MultimediaItem({ title, url: fixUrl(href), posterUrl: poster, type: "movie" }));
+        }
         cb({ success: true, data: items });
     } catch (e) { cb({ success: false, errorCode: "FETCH_ERROR", message: String(e) }); }
 }
@@ -68,18 +105,28 @@ async function search(query, cb) {
 async function load(url, cb) {
     try {
         const html = await httpFetch(url);
-        const $ = cheerio.load(html);
-        const title = $("h1, .entry-title").first().text().trim() || $("title").text() || "Unknown";
-        const posterUrl = $("img").first().attr("data-src") || $("img").first().attr("data-image") || $("img").first().attr("src") || "";
-        const plot = $(".entry-content p").first().text().trim() || "";
-        const yearMatch = $("body").text().match(/(19|20)\d{2}/);
+        let title = (html.match(/<h1[^>]*>([^<]*)/i) || [])[1] || (html.match(/property="og:title"\s+content="([^"]+)"/) || [])[1] || "Unknown";
+        title = title.replace(/مشاهدة|تحميل|فيلم|مسلسل|انمي|مترجم|مدبلج|كامل|اون لاين/gi, '').trim() || "Unknown";
+        const posterUrl = (html.match(/data-(?:src|image)="([^"]+)"/) || [])[1] || (html.match(/property="og:image"\s+content="([^"]+)"/) || [])[1] || '';
+        const plot = (html.match(/class="[^"]*(?:story|desc|content|entry-content)[^"]*"[^>]*>([\s\S]*?)<\/div>/i) || [])[1] || '';
+        const yearMatch = html.match(/(19|20)\d{2}/);
         const year = yearMatch ? parseInt(yearMatch[0]) : undefined;
-        const isSeries = $("ul.Episodes, ul.insert_ep, div.Episodes, ").length > 0;
+        const isSeries = html.includes('episodes-list') || html.includes('Episodes') || html.includes('insert_ep') || url.includes('مسلسل') || false;
 
-        if (isSeries && episodes?.length > 0) {
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "series", plot, year, episodes }) });
+        if (isSeries) {
+            const episodes = [];
+            const epLinks = matchAll(html, /href="([^"]*(?:episode|الحلقة|حلقة)[^"]*)"/gi);
+            const seen = new Set();
+            for (const ep of epLinks) {
+                if (seen.has(ep[1])) continue;
+                seen.add(ep[1]);
+                const text = ep[0].replace(/<[^>]+>/g, ' ');
+                const epNum = (text.match(/(?:الحلقة|episode|ep)\s*[:\-]?\s*(\d{1,4})/i) || ep[1].match(/(\d{1,4})/) || [])[1];
+                episodes.push(new Episode({ name: epNum ? "الحلقة " + epNum : "حلقة", url: fixUrl(ep[1]), episode: epNum ? parseInt(epNum) : episodes.length + 1, season: 1 }));
+            }
+            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "series", plot: plot.replace(/<[^>]+>/g, '').trim(), year, episodes }) });
         } else {
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "movie", plot, year }) });
+            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "movie", plot: plot.replace(/<[^>]+>/g, '').trim(), year }) });
         }
     } catch (e) { cb({ success: false, errorCode: "LOAD_ERROR", message: String(e) }); }
 }
@@ -87,7 +134,6 @@ async function load(url, cb) {
 async function loadStreams(url, cb) {
     try {
         const html = await httpFetch(url);
-        const $ = cheerio.load(html);
         const streams = [];
         const visited = new Set();
         async function tryExt(u) {
@@ -95,12 +141,10 @@ async function loadStreams(url, cb) {
             visited.add(u);
             try { if (typeof loadExtractor !== 'undefined') { const r = await loadExtractor(u); if (r?.length) streams.push(...r); } } catch (e) {}
         }
-        $("iframe[src], .download-links a").each((i, el) => tryExt($(el).attr("src")));
-        $("iframe[src], .download-links a").each((i, el) => tryExt($(el).attr("data-src")));
-        $(".download-links a").each((i, el) => {
-            const u = $(el).attr("data-url") || $(el).attr("data-src") || $(el).attr("href") || "";
-            if (u) tryExt(u);
-        });
+        const iframes = matchAll(html, /<iframe[^>]+src="([^"]+)"/gi);
+        await Promise.all(iframes.map(m => tryExt(m[1])));
+        const dataSrcs = matchAll(html, /data-(?:url|src)="([^"]+)"/gi);
+        await Promise.all(dataSrcs.map(m => tryExt(m[1])));
         cb({ success: true, data: streams });
     } catch (e) { cb({ success: false, errorCode: "STREAM_ERROR", message: String(e) }); }
 }

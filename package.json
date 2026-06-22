@@ -1,7 +1,7 @@
 {
   "name": "arprov-plugins",
   "version": "1.0.0",
-  "description": "SkyStream Arabic plugins",
+  "description": "SkyStream Arabic plugins - no external dependencies needed",
   "scripts": {
     "validate": "for plugin in */plugin.js; do echo \"Validating ${plugin%/*}...\"; npx esbuild \"$plugin\" --bundle --outfile=/dev/null 2>&1 || exit 1; done && echo 'All plugins built successfully!'"
   },
@@ -9,7 +9,6 @@
     "esbuild": "latest"
   },
   "dependencies": {
-    "cheerio": "^1.0.0",
     "skystream-extractors": "latest"
   }
 }
