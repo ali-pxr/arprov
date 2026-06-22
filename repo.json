@@ -1,8 +1,31 @@
 {
-  "name": "Arabic CloudStream Repo",
-  "description": "Arabic CloudStream extensions - FaselHD, Akwam, Anime4up and more",
+  "name": "Arabic SkyStream Repo",
+  "description": "Arabic SkyStream plugins - 24 providers converted from CloudStream arprov",
   "manifestVersion": 1,
   "pluginLists": [
-    "https://raw.githubusercontent.com/ramailo1/arprov/builds/plugins.json"
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4U/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Akwam/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/ArabSeed/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Animeiat/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyBest/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/FaselHD/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/MovizLands/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaClub/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaLeek/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaNow/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/QisatTv/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Fushaar/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyDead/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/MyCima/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Shahid4u/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/GateAnime/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/RistoAnime/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Anime4up/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/AnimeBlkom/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Tuk/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/TopCinema/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4uForum/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/ShahidMBC/plugin.json",
+    "https://raw.githubusercontent.com/ali-pxr/arprov/main/FajerShow/plugin.json"
   ]
 }

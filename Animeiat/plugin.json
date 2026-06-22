@@ -1,0 +1,7 @@
+{
+  "packageName": "com.arabic.animeiat",
+  "name": "Animeiat",
+  "baseUrl": "https://api.animegarden.net/v1/animeiat",
+  "author": "arprov-converter",
+  "language": "ar"
+}
