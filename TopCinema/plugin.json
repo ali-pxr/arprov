@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.topcinema",
   "name": "TopCinema",
-  "baseUrl": "https://topcima.online",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://topcinema.tv",
+  "description": "TopCinema - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies"
+  ]
 }

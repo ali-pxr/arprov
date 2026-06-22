@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.tuk",
   "name": "Tuk",
-  "baseUrl": "https://tuk.cam",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://tukxx.com",
+  "description": "Tuk - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

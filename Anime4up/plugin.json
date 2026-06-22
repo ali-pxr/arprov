@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.anime4up",
   "name": "Anime4up",
-  "baseUrl": "https://w1.anime4up.rest",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://anime4up.com",
+  "description": "Anime4up - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Anime"
+  ]
 }

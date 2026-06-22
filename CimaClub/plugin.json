@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.cimaclub",
   "name": "CimaClub",
-  "baseUrl": "https://ciimaclub.us",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://cimaclub.com",
+  "description": "CimaClub - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

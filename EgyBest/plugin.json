@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.egybest",
   "name": "EgyBest",
-  "baseUrl": "https://egibest.net",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://egybest.co",
+  "description": "EgyBest - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

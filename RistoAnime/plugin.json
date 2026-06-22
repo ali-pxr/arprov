@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.ristoanime",
   "name": "RistoAnime",
-  "baseUrl": "https://ristoanime.org",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://ristoanime.com",
+  "description": "RistoAnime - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Anime"
+  ]
 }

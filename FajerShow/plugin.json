@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.fajershow",
   "name": "FajerShow",
+  "version": 1,
   "baseUrl": "https://fajer.show",
-  "author": "arprov-converter",
-  "language": "ar"
+  "description": "FajerShow - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

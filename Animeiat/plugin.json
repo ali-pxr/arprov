@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.animeiat",
   "name": "Animeiat",
-  "baseUrl": "https://api.animegarden.net/v1/animeiat",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://animeiat.tv",
+  "description": "Animeiat - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Anime"
+  ]
 }

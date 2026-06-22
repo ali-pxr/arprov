@@ -1,7 +1,18 @@
 {
   "packageName": "com.arabic.arabseed",
   "name": "ArabSeed",
-  "baseUrl": "https://asd.pics",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://arabseed.co",
+  "description": "ArabSeed - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series",
+    "Anime"
+  ]
 }

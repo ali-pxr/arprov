@@ -1,7 +1,16 @@
 {
-  "packageName": "com.arabic.qisat",
+  "packageName": "com.arabic.qisattv",
   "name": "QisatTv",
-  "baseUrl": "https://qesset.com",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://qisat.tv",
+  "description": "QisatTv - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Series"
+  ]
 }

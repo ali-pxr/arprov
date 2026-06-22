@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.mycima",
   "name": "MyCima",
-  "baseUrl": "https://mycima.fan",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://mycima.fun",
+  "description": "MyCima - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

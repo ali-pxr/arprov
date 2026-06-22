@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.animeblkom",
   "name": "AnimeBlkom",
+  "version": 1,
   "baseUrl": "https://animeblkom.com",
-  "author": "arprov-converter",
-  "language": "ar"
+  "description": "AnimeBlkom - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Anime"
+  ]
 }

@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.faselhd",
   "name": "FaselHD",
-  "baseUrl": "https://faselhdx.bid",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://faselhd.co",
+  "description": "FaselHD - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

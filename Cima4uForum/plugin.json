@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.cima4uforum",
   "name": "Cima4uForum",
-  "baseUrl": "https://cima4u.forum",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://cima4u.co",
+  "description": "Cima4uForum - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

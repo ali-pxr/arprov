@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.shahidmbc",
   "name": "ShahidMBC",
-  "baseUrl": "https://shahid.mbc.net",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://shahidmbc.net",
+  "description": "ShahidMBC - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Series"
+  ]
 }

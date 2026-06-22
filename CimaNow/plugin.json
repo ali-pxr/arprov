@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.cimanow",
   "name": "CimaNow",
+  "version": 1,
   "baseUrl": "https://cimanow.cc",
-  "author": "arprov-converter",
-  "language": "ar"
+  "description": "CimaNow - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

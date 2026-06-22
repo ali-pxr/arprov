@@ -1,7 +1,17 @@
 {
   "packageName": "com.arabic.shahid4u",
   "name": "Shahid4u",
-  "baseUrl": "https://shahhid4u.boats",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://shahid4u.com",
+  "description": "Shahid4u - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series"
+  ]
 }

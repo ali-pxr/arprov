@@ -1,7 +1,16 @@
 {
   "packageName": "com.arabic.egydead",
   "name": "EgyDead",
-  "baseUrl": "https://egydead.rip",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://egydead.space",
+  "description": "EgyDead - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies"
+  ]
 }

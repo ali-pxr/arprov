@@ -1,7 +1,18 @@
 {
   "packageName": "com.arabic.akwam",
   "name": "Akwam",
-  "baseUrl": "https://ak.sv",
-  "author": "arprov-converter",
-  "language": "ar"
+  "version": 1,
+  "baseUrl": "https://akwam.co",
+  "description": "Akwam - Arabic streaming plugin",
+  "authors": [
+    "ali-pxr"
+  ],
+  "languages": [
+    "ar"
+  ],
+  "categories": [
+    "Movies",
+    "Series",
+    "Anime"
+  ]
 }
