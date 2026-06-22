@@ -21,7 +21,7 @@ async function httpFetch(url, extraHeaders = {}) {
     return '';
 }
 
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 
 async function getHome(cb) {
     const data = {};
