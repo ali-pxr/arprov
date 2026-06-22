@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.animeiat",
+  "id": "animeiat",
   "name": "Animeiat",
-  "version": 1,
-  "baseUrl": "https://animeiat.tv",
-  "description": "Animeiat - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Anime"
-  ]
+    "anime"
+  ],
+  "iconUrl": "https://animeiat.tv/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Animeiat/plugin.js"
 }

@@ -44,7 +44,7 @@ function fixUrl(u) {
     return baseUrl + "/" + u;
 }
 
-async function getHome(cb) { cb({ success: true, data: {} }); }
+async function getHome(page, cb) { cb({ success: true, data: {} }); }
 
 async function search(query, cb) {
     try {
@@ -55,7 +55,7 @@ async function search(query, cb) {
             const name = (block[1].match(/class="name"[^>]*>([^<]*)/i) || [])[1] || '';
             const href = (block[1].match(/href="([^"]+)"/) || [])[1] || '';
             const poster = (block[1].match(/data-original="([^"]+)"/) || [])[1] || (block[1].match(/src="([^"]+)"/) || [])[1] || '';
-            if (name && href) items.push(new MultimediaItem({ title: name.trim(), url: fixUrl(href), posterUrl: poster, type: "anime" }));
+            if (name && href) items.push({ title: name.trim(), url: fixUrl(href), posterUrl: poster, type: "anime" });
         }
         cb({ success: true, data: items });
     } catch (e) { cb({ success: false, errorCode: "FETCH_ERROR", message: String(e) }); }
@@ -70,7 +70,7 @@ async function loadStreams(url, cb) {
         const btns = matchAll(html, /id="download"[^>]*>[\s\S]*?<a[^>]*class="btn"[^>]*href="([^"]+)"/i);
         for (const btn of btns) {
             const q = (btn[0].match(/(\d+)/) || [])[0] || '0';
-            if (btn[1]) streams.push(new StreamResult({ url: btn[1], quality: q + "p" }));
+            if (btn[1]) streams.push({ url: btn[1], quality: q + "p" });
         }
         const servers = matchAll(html, /data-src="([^"]+)"/g);
         const visited = new Set();

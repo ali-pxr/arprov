@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.cima4uforum",
+  "id": "cima4uforum",
   "name": "Cima4uForum",
-  "version": 1,
-  "baseUrl": "https://cima4u.co",
-  "description": "Cima4uForum - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://cima4u.co/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4uForum/plugin.js"
 }

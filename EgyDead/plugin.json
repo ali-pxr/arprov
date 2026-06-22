@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.egydead",
+  "id": "egydead",
   "name": "EgyDead",
-  "version": 1,
-  "baseUrl": "https://egydead.space",
-  "description": "EgyDead - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Movies"
-  ]
+    "movies"
+  ],
+  "iconUrl": "https://egydead.space/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyDead/plugin.js"
 }

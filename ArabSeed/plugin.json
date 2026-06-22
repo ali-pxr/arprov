@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.arabseed",
+  "id": "arabseed",
   "name": "ArabSeed",
-  "version": 1,
-  "baseUrl": "https://arabseed.co",
-  "description": "ArabSeed - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,8 +9,10 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series",
-    "Anime"
-  ]
+    "movies",
+    "series",
+    "anime"
+  ],
+  "iconUrl": "https://arabseed.co/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/ArabSeed/plugin.js"
 }

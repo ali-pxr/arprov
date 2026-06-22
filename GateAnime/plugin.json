@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.gateanime",
+  "id": "gateanime",
   "name": "GateAnime",
-  "version": 1,
-  "baseUrl": "https://gateanime.com",
-  "description": "GateAnime - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Anime"
-  ]
+    "anime"
+  ],
+  "iconUrl": "https://gateanime.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/GateAnime/plugin.js"
 }

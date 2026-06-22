@@ -44,7 +44,7 @@ function fixUrl(u) {
     return baseUrl + "/" + u;
 }
 
-async function getHome(cb) {
+async function getHome(page, cb) {
     const cats = { "أفلام": "/movies?page=1", "مسلسلات": "/series?page=1" };
     const data = {};
     for (const [name, path] of Object.entries(cats)) {
@@ -61,7 +61,7 @@ async function getHome(cb) {
                 const poster = (block[1].match(/data-src="([^"]+)"/) || [])[1] || '';
                 const yearM = block[1].match(/badge-secondary[^>]*>(\d{4})/);
                 const isSeries = href.includes("/series/") || href.includes("/episode/");
-                items.push(new MultimediaItem({ title: alt, url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie", year: yearM ? parseInt(yearM[1]) : undefined }));
+                items.push({ title: alt, url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie", year: yearM ? parseInt(yearM[1]) : undefined });
             }
             if (items.length) data[name] = items;
         } catch (e) {}
@@ -81,7 +81,7 @@ async function search(query, cb) {
             if (href.includes("/games/")) continue;
             const alt = (block[1].match(/alt="([^"]+)"/) || [])[1] || '';
             const poster = (block[1].match(/data-src="([^"]+)"/) || [])[1] || '';
-            items.push(new MultimediaItem({ title: alt, url: fixUrl(href), posterUrl: poster, type: "movie" }));
+            items.push({ title: alt, url: fixUrl(href), posterUrl: poster, type: "movie" });
         }
         cb({ success: true, data: items });
     } catch (e) { cb({ success: false, errorCode: "FETCH_ERROR", message: String(e) }); }
@@ -106,19 +106,19 @@ async function load(url, cb) {
                     try {
                         const linkHtml = await httpFetch(link[1]);
                         const videoUrl = (linkHtml.match(/btn-loader[^>]*><a[^>]+href="([^"]+)"/) || [])[1];
-                        if (videoUrl) streams.push(new StreamResult({ url: videoUrl, quality, headers: { Referer: baseUrl } }));
+                        if (videoUrl) streams.push({ url: videoUrl, quality, headers: { Referer: baseUrl } });
                     } catch (e) {}
                 }
             }
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "movie", plot: synopsis.replace(/<[^>]+>/g, '').trim() }) });
+            cb({ success: true, data: { title, url, posterUrl, type: "movie", plot: synopsis.replace(/<[^>]+>/g, '').trim() } });
         } else {
             const episodes = [];
             const epBlocks = matchAll(html, /text-white[^>]+href="([^"]+)"[^>]*>([^<]*)/gi);
             for (const ep of epBlocks) {
                 const epNum = (ep[2].match(/\d+/) || [])[0];
-                episodes.push(new Episode({ name: ep[2].trim(), url: ep[1], episode: epNum ? parseInt(epNum) : episodes.length + 1, season: 1 }));
+                episodes.push({ name: ep[2].trim(), url: ep[1], episode: epNum ? parseInt(epNum) : episodes.length + 1, season: 1 });
             }
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "series", plot: synopsis.replace(/<[^>]+>/g, '').trim(), episodes }) });
+            cb({ success: true, data: { title, url, posterUrl, type: "series", plot: synopsis.replace(/<[^>]+>/g, '').trim(), episodes } });
         }
     } catch (e) { cb({ success: false, errorCode: "LOAD_ERROR", message: String(e) }); }
 }
@@ -136,7 +136,7 @@ async function loadStreams(url, cb) {
                 try {
                     const linkHtml = await httpFetch(link[1]);
                     const videoUrl = (linkHtml.match(/btn-loader[^>]*><a[^>]+href="([^"]+)"/) || [])[1];
-                    if (videoUrl) streams.push(new StreamResult({ url: videoUrl, quality, headers: { Referer: baseUrl } }));
+                    if (videoUrl) streams.push({ url: videoUrl, quality, headers: { Referer: baseUrl } });
                 } catch (e) {}
             }
         }

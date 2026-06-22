@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.cima4u",
+  "id": "cima4u",
   "name": "Cima4U",
-  "version": 1,
-  "baseUrl": "https://cfu.cam",
-  "description": "Cima4U - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://cfu.cam/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4U/plugin.js"
 }

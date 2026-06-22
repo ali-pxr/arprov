@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.ristoanime",
+  "id": "ristoanime",
   "name": "RistoAnime",
-  "version": 1,
-  "baseUrl": "https://ristoanime.com",
-  "description": "RistoAnime - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Anime"
-  ]
+    "anime"
+  ],
+  "iconUrl": "https://ristoanime.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/RistoAnime/plugin.js"
 }

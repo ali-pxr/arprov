@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.qisattv",
+  "id": "qisattv",
   "name": "QisatTv",
-  "version": 1,
-  "baseUrl": "https://qisat.tv",
-  "description": "QisatTv - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Series"
-  ]
+    "series"
+  ],
+  "iconUrl": "https://qisat.tv/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/QisatTv/plugin.js"
 }

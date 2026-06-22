@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.shahid4u",
+  "id": "shahid4u",
   "name": "Shahid4u",
-  "version": 1,
-  "baseUrl": "https://shahid4u.com",
-  "description": "Shahid4u - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://shahid4u.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Shahid4u/plugin.js"
 }

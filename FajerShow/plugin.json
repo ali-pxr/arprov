@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.fajershow",
+  "id": "fajershow",
   "name": "FajerShow",
-  "version": 1,
-  "baseUrl": "https://fajer.show",
-  "description": "FajerShow - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://fajer.show/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/FajerShow/plugin.js"
 }

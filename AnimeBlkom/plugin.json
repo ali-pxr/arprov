@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.animeblkom",
+  "id": "animeblkom",
   "name": "AnimeBlkom",
-  "version": 1,
-  "baseUrl": "https://animeblkom.com",
-  "description": "AnimeBlkom - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Anime"
-  ]
+    "anime"
+  ],
+  "iconUrl": "https://animeblkom.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/AnimeBlkom/plugin.js"
 }

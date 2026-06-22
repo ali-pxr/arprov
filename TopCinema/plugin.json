@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.topcinema",
+  "id": "topcinema",
   "name": "TopCinema",
-  "version": 1,
-  "baseUrl": "https://topcinema.tv",
-  "description": "TopCinema - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Movies"
-  ]
+    "movies"
+  ],
+  "iconUrl": "https://topcinema.tv/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/TopCinema/plugin.js"
 }

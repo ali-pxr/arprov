@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.fushaar",
+  "id": "fushaar",
   "name": "Fushaar",
-  "version": 1,
-  "baseUrl": "https://fushaar.com",
-  "description": "Fushaar - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Movies"
-  ]
+    "movies"
+  ],
+  "iconUrl": "https://fushaar.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Fushaar/plugin.js"
 }

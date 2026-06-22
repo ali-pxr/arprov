@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.movizlands",
+  "id": "movizlands",
   "name": "MovizLands",
-  "version": 1,
-  "baseUrl": "https://movizland.cyou",
-  "description": "MovizLands - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://movizland.cyou/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/MovizLands/plugin.js"
 }

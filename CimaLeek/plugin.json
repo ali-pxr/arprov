@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.cimaleek",
+  "id": "cimaleek",
   "name": "CimaLeek",
-  "version": 1,
-  "baseUrl": "https://cimaleek.io",
-  "description": "CimaLeek - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://cimaleek.io/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaLeek/plugin.js"
 }

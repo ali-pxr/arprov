@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.cimanow",
+  "id": "cimanow",
   "name": "CimaNow",
-  "version": 1,
-  "baseUrl": "https://cimanow.cc",
-  "description": "CimaNow - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://cimanow.cc/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaNow/plugin.js"
 }

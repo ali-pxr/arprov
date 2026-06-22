@@ -1,9 +1,104 @@
 {
-  "name": "arprov-arabic",
+  "name": "Arabic SkyStream Repo",
   "packageName": "com.ali-pxr.arprov",
-  "description": "Arabic SkyStream plugins - 24 providers for movies, series, and anime",
+  "description": "Arabic content plugins for SkyStream - 24 providers for movies, series, and anime",
   "manifestVersion": 2,
-  "pluginLists": [
-    "https://raw.githubusercontent.com/ali-pxr/arprov/main/dist/plugins.json"
+  "plugins": [
+    {
+      "name": "Akwam",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Akwam/plugin.json"
+    },
+    {
+      "name": "Anime4up",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Anime4up/plugin.json"
+    },
+    {
+      "name": "AnimeBlkom",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/AnimeBlkom/plugin.json"
+    },
+    {
+      "name": "Animeiat",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Animeiat/plugin.json"
+    },
+    {
+      "name": "ArabSeed",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/ArabSeed/plugin.json"
+    },
+    {
+      "name": "Cima4U",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4U/plugin.json"
+    },
+    {
+      "name": "Cima4uForum",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Cima4uForum/plugin.json"
+    },
+    {
+      "name": "CimaClub",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaClub/plugin.json"
+    },
+    {
+      "name": "CimaLeek",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaLeek/plugin.json"
+    },
+    {
+      "name": "CimaNow",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/CimaNow/plugin.json"
+    },
+    {
+      "name": "EgyBest",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyBest/plugin.json"
+    },
+    {
+      "name": "EgyDead",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyDead/plugin.json"
+    },
+    {
+      "name": "FajerShow",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/FajerShow/plugin.json"
+    },
+    {
+      "name": "FaselHD",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/FaselHD/plugin.json"
+    },
+    {
+      "name": "Fushaar",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Fushaar/plugin.json"
+    },
+    {
+      "name": "GateAnime",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/GateAnime/plugin.json"
+    },
+    {
+      "name": "MovizLands",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/MovizLands/plugin.json"
+    },
+    {
+      "name": "MyCima",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/MyCima/plugin.json"
+    },
+    {
+      "name": "QisatTv",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/QisatTv/plugin.json"
+    },
+    {
+      "name": "RistoAnime",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/RistoAnime/plugin.json"
+    },
+    {
+      "name": "Shahid4u",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Shahid4u/plugin.json"
+    },
+    {
+      "name": "ShahidMBC",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/ShahidMBC/plugin.json"
+    },
+    {
+      "name": "TopCinema",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/TopCinema/plugin.json"
+    },
+    {
+      "name": "Tuk",
+      "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Tuk/plugin.json"
+    }
   ]
 }

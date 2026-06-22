@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.egybest",
+  "id": "egybest",
   "name": "EgyBest",
-  "version": 1,
-  "baseUrl": "https://egybest.co",
-  "description": "EgyBest - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://egybest.co/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/EgyBest/plugin.js"
 }

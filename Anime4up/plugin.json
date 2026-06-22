@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.anime4up",
+  "id": "anime4up",
   "name": "Anime4up",
-  "version": 1,
-  "baseUrl": "https://anime4up.com",
-  "description": "Anime4up - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,6 +9,8 @@
     "ar"
   ],
   "categories": [
-    "Anime"
-  ]
+    "anime"
+  ],
+  "iconUrl": "https://anime4up.com/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/Anime4up/plugin.js"
 }

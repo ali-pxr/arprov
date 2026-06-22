@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.mycima",
+  "id": "mycima",
   "name": "MyCima",
-  "version": 1,
-  "baseUrl": "https://mycima.fun",
-  "description": "MyCima - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://mycima.fun/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/MyCima/plugin.js"
 }

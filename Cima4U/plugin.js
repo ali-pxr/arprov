@@ -44,7 +44,7 @@ function fixUrl(u) {
     return baseUrl + "/" + u;
 }
 
-async function getHome(cb) {
+async function getHome(page, cb) {
     const cats = {
         "أفلام أجنبي": "/category/افلام-اجنبي/",
         "أفلام أسيوي": "/category/افلام-اسيوي/",
@@ -67,7 +67,7 @@ async function getHome(cb) {
                 if (!title || title.toLowerCase() === 'cima4u') continue;
                 const poster = (block[1].match(/data-(?:image|src)="([^"]+)"/) || [])[1] || (block[1].match(/src="([^"]+)"/) || [])[1] || '';
                 const isSeries = block[1].includes(' Episodes') || block[1].includes('insert_ep') || href.includes('مسلسل');
-                items.push(new MultimediaItem({ title: title.trim(), url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie" }));
+                items.push({ title: title.trim(), url: fixUrl(href), posterUrl: poster, type: isSeries ? "series" : "movie" });
             }
             if (items.length) data[name] = items;
         } catch (e) {}
@@ -88,7 +88,7 @@ async function search(query, cb) {
             let title = (block[1].match(/class="[^"]*(?:BoxTitle|Title)[^"]*"[^>]*>([^<]*)/i) || [])[1] || (block[1].match(/alt="([^"]+)"/) || [])[1] || '';
             if (!title) continue;
             const poster = (block[1].match(/data-(?:image|src)="([^"]+)"/) || [])[1] || '';
-            items.push(new MultimediaItem({ title: title.trim(), url: fixUrl(href), posterUrl: poster, type: "movie" }));
+            items.push({ title: title.trim(), url: fixUrl(href), posterUrl: poster, type: "movie" });
         }
         cb({ success: true, data: items });
     } catch (e) { cb({ success: false, errorCode: "FETCH_ERROR", message: String(e) }); }
@@ -114,11 +114,11 @@ async function load(url, cb) {
                 const text = ep[0].replace(/<[^>]+>/g, ' ');
                 const epM = text.match(/(?:الحلقة|episode|ep)\s*[:\-]?\s*(\d{1,4})/i) || epUrl.match(/(?:الحلقة|episode|ep)\s*[:\-]?\s*(\d{1,4})/i);
                 const sM = text.match(/(?:الموسم|season|s)\s*[:\-]?\s*(\d{1,2})/i);
-                episodes.push(new Episode({ name: epM ? "الحلقة " + epM[1] : "حلقة", url: epUrl, episode: epM ? parseInt(epM[1]) : episodes.length + 1, season: sM ? parseInt(sM[1]) : 1 }));
+                episodes.push({ name: epM ? "الحلقة " + epM[1] : "حلقة", url: epUrl, episode: epM ? parseInt(epM[1]) : episodes.length + 1, season: sM ? parseInt(sM[1]) : 1 });
             }
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "series", plot: plot.replace(/<[^>]+>/g, '').trim(), year, episodes }) });
+            cb({ success: true, data: { title, url, posterUrl, type: "series", plot: plot.replace(/<[^>]+>/g, '').trim(), year, episodes } });
         } else {
-            cb({ success: true, data: new MultimediaItem({ title, url, posterUrl, type: "movie", plot: plot.replace(/<[^>]+>/g, '').trim(), year }) });
+            cb({ success: true, data: { title, url, posterUrl, type: "movie", plot: plot.replace(/<[^>]+>/g, '').trim(), year } });
         }
     } catch (e) { cb({ success: false, errorCode: "LOAD_ERROR", message: String(e) }); }
 }

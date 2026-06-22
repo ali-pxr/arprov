@@ -1,9 +1,7 @@
 {
-  "packageName": "com.arabic.faselhd",
+  "id": "faselhd",
   "name": "FaselHD",
-  "version": 1,
-  "baseUrl": "https://faselhd.co",
-  "description": "FaselHD - Arabic streaming",
+  "version": "1.0.0",
   "authors": [
     "ali-pxr"
   ],
@@ -11,7 +9,9 @@
     "ar"
   ],
   "categories": [
-    "Movies",
-    "Series"
-  ]
+    "movies",
+    "series"
+  ],
+  "iconUrl": "https://faselhd.co/favicon.ico",
+  "url": "https://raw.githubusercontent.com/ali-pxr/arprov/main/FaselHD/plugin.js"
 }
