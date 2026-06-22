@@ -143,15 +143,17 @@ async function loadStreams(url, cb) {
             } catch (e) {}
         }
 
-        $("iframe[src]").each((i, el) => tryExtract($(el).attr("src")));
-        $(".serversWatchSide li").each((i, el) => {
+        await Promise.all([
+        ...$("iframe[src]").map((i, el) => tryExtract($(el).attr("src"))).get(),
+        ...$(".serversWatchSide li").map((i, el) => {
             const u = $(el).attr("data-url") || $(el).attr("url") || $(el).attr("data-src") || "";
-            if (u) tryExtract(u);
-        });
-        $(".DownloadServers a, a.DownloadLink").each((i, el) => {
+            return u ? tryExtract(u) : Promise.resolve();
+        }).get(),
+        ...$(".DownloadServers a, a.DownloadLink").map((i, el) => {
             const href = $(el).attr("href") || "";
-            if (href && !href.includes("midgerelativelyhoax")) tryExtract(href);
-        });
+            return (href && !href.includes("midgerelativelyhoax")) ? tryExtract(href) : Promise.resolve();
+        }).get()
+    ]);
 
         cb({ success: true, data: streams });
     } catch (e) { cb({ success: false, errorCode: "STREAM_ERROR", message: String(e) }); }

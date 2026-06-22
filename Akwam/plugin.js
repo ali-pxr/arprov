@@ -115,7 +115,7 @@ async function loadStreams(url, cb) {
         $("div.tab-content.quality").each((i, tab) => {
             const qId = parseInt($(tab).attr("id")) || 0;
             const quality = qMap[qId] || "Unknown";
-            $(tab).find(".col-lg-6 > a").each((j, linkEl) => {
+            $(tab).find(".col-lg-6 > a").each(async (j, linkEl) => {
                 const linkText = $(linkEl).text() || "";
                 if (!linkText.includes("تحميل")) return;
                 let href = $(linkEl).attr("href") || "";
